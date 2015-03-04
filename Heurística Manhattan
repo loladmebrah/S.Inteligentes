@@ -1,0 +1,19 @@
+// Intento 1 de varios (?)
+public static int manhattan(int a [])
+{
+	int posllegada;
+	int pesox;
+	int pesoy;
+	int pesoseed = 0;
+
+	for (i=0; i<=a.length(); i++)
+	{
+		posllegada=a[i].value - 1;
+		pesox = Math.abs((posllegada/4) - (i/4));
+		pesoy = Math.abs((posllegada%4) - (i%4));
+		pesoseed = pesox+pesoy+pesoseed;
+
+	}
+	return pesoseed;
+
+}
