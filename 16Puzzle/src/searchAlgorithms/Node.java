@@ -113,24 +113,72 @@ public class Node implements Comparable<Node>{
         return -1;
     }
  
-    public static int manhattan (int[] a, int k){
-        int posllegada;
-        int pesox;
-        int pesoy;
-        int pesonodo;
-          
-        for (int i = 0; i < a.length; i++) {
-            posllegada= a[i] - 1;
-            pesox = Math.abs((posllegada/4) - (i/4));
-            pesoy = Math.abs( (posllegada % 4) - (i % 4) );
-            
-            pesonodo = pesox + pesoy;
-            
-            if(a[i] == k)
-                return pesonodo;
-        }
-        return -1;
-    }
+   public static int manhattan(int seed [])
+{
+	int posllegada;
+	int pesox;
+	int pesoy;
+	int pesoseed = 0;
+
+	for (int i=0; i<=seed.length; i++)
+	{
+		posllegada= seed[i] - 1;
+		pesox = Math.abs((posllegada/4) - (i/4));
+		pesoy = Math.abs((posllegada%4) - (i%4));
+		pesoseed = pesox+pesoy+pesoseed;
+
+	}
+	return pesoseed;
+
+}
+
+public static int rabioso(int seed [])
+{
+	int pesoseed = 0;
+
+	for (int i=0; i<=seed.length; i++)
+	{  
+		if(!(seed[i]==(i+1)))
+		{
+			pesoseed=pesoseed+1;
+		}
+		 
+	}
+	return pesoseed;
+}
+
+public static int conflictolineal(int seed [])
+{
+	int posllegada;
+	int pesox;
+	int pesoy;
+	int pesoseed = 0;
+
+	for (int i=0; i<=seed.length; i++)
+	{
+		if(i<(seed.length-1))
+		{
+			if(!(((i%4)==3) && ((i+1)%4)==0))
+			{
+				if((seed[i]==(i+1)) && (seed[i+1]==(i)))
+				{
+
+					pesoseed= pesoseed+2;
+				}
+			}
+
+
+		}
+
+		posllegada=seed[i] - 1;
+		pesox = Math.abs((posllegada/4) - (i/4));
+		pesoy = Math.abs((posllegada%4) - (i%4));
+		pesoseed = pesox+pesoy+pesoseed;
+
+	}
+	return pesoseed;
+
+}
     
     public static int manJatan (int[] seed) {
         int cont = 0;
