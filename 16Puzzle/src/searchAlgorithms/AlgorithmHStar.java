@@ -2,13 +2,13 @@ package searchAlgorithms;
 
 import java.util.ArrayList;
 
-public class AlgorithmH1 extends AbstractAlgorithm{
-
+public class AlgorithmHStar extends AbstractAlgorithm{
+    
     private Node s;
     public static ArrayList<Integer> Path;
     private boolean sol;
     
-    public AlgorithmH1(int[] seed) {
+    public AlgorithmHStar(int[] seed) {
         super(seed);
         
         Path = new ArrayList<>();
@@ -36,8 +36,8 @@ public class AlgorithmH1 extends AbstractAlgorithm{
 
     @Override
     public void result() {
-        s.thePathH1();
-        System.out.println(AlgorithmH1.Path.toString());
+        s.thePathHStar();
+        System.out.println(AlgorithmHStar.Path.toString());
     }
 
     private void expand(Node aux) {
@@ -45,21 +45,20 @@ public class AlgorithmH1 extends AbstractAlgorithm{
         Node nu;
         int pH = aux.pesoHoja();
         if((mov & 1) == 0){
-            nu = new Node(Node.rabioso(aux.newSeed(0), pH), aux.newSeed(0), aux, 0);
+            nu = new Node(Node.conflictolineal(aux.newSeed(0), pH), aux.newSeed(0), aux, 0);
             this.getQueue().add(nu);
         }
         if((mov & 2) == 0){
-            nu = new Node(Node.rabioso(aux.newSeed(1), pH), aux.newSeed(1), aux, 1);
+            nu = new Node(Node.conflictolineal(aux.newSeed(1), pH), aux.newSeed(1), aux, 1);
             this.getQueue().add(nu);
         }
         if((mov & 4) == 0){
-            nu = new Node(Node.rabioso(aux.newSeed(2), pH), aux.newSeed(2), aux, 2);
+            nu = new Node(Node.conflictolineal(aux.newSeed(2), pH), aux.newSeed(2), aux, 2);
             this.getQueue().add(nu);
         }
         if((mov & 8) == 0){
-            nu = new Node(Node.rabioso(aux.newSeed(3), pH), aux.newSeed(3), aux, 3);
+            nu = new Node(Node.conflictolineal(aux.newSeed(3), pH), aux.newSeed(3), aux, 3);
             this.getQueue().add(nu);
         }
     }
-    
 }

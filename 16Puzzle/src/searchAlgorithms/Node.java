@@ -104,6 +104,24 @@ public class Node implements Comparable<Node>{
             this.father.thePathH1();
     }
     
+    public void thePathH2() {
+        AlgorithmH2.Path.add(this.moveFFather);
+        if(this.moveFFather != -1)
+            this.father.thePathH2();
+    }
+    
+    public void thePathHStar() {
+        AlgorithmHStar.Path.add(this.moveFFather);
+        if(this.moveFFather != -1)
+            this.father.thePathHStar();
+    }
+    
+    public int pesoHoja(){
+        if(this.father != null)
+            return 1 + this.father.pesoHoja();
+        else
+            return 1;
+    }
     
     public static int searchPos(int[] a, int k){
         for (int i = 0; i < a.length; i++) {
@@ -113,14 +131,14 @@ public class Node implements Comparable<Node>{
         return -1;
     }
  
-    public static int manhattan(int seed [])
-{
-	int posllegada;
+    public static int manhattan(int seed [], int hijo)
+    {
+        int posllegada;
 	int pesox;
 	int pesoy;
-	int pesoseed = 0;
+	int pesoseed = hijo;
 
-	for (int i=0; i<=seed.length; i++)
+	for (int i=0; i < seed.length; i++)
 	{
 		posllegada= seed[i] - 1;
 		pesox = Math.abs((posllegada/4) - (i/4));
@@ -129,14 +147,13 @@ public class Node implements Comparable<Node>{
 
 	}
 	return pesoseed;
+    }
 
-}
+    public static int rabioso(int seed [], int hijo)
+    {
+	int pesoseed = hijo;
 
-public static int rabioso(int seed [])
-{
-	int pesoseed = 0;
-
-	for (int i=0; i<=seed.length; i++)
+	for (int i=0; i< seed.length; i++)
 	{  
 		if(!(seed[i]==(i+1)))
 		{
@@ -145,16 +162,16 @@ public static int rabioso(int seed [])
 		 
 	}
 	return pesoseed;
-}
+    }
 
-public static int conflictolineal(int seed [])
-{
+    public static int conflictolineal(int seed [], int hijo)
+    {
 	int posllegada;
 	int pesox;
 	int pesoy;
-	int pesoseed = 0;
+	int pesoseed = hijo;
 
-	for (int i=0; i<=seed.length; i++)
+	for (int i=0; i< seed.length; i++)
 	{
 		if(i<(seed.length-1))
 		{
@@ -177,13 +194,5 @@ public static int conflictolineal(int seed [])
 
 	}
 	return pesoseed;
-
-}
-    
-    public static int manJatan (int[] seed) {
-        int cont = 0;
-        for(int i = 0; i < seed.length; i++){
-            
-        }
     }
 }

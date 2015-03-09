@@ -109,8 +109,7 @@ public class PuzzleGame {
                     lastMove = 0;
                     lastMove |= 2;
                 }
-            }else
-            if(aux < 0.5 && ((lastMove & 4) != 4)){
+            }else if(aux < 0.5 && ((lastMove & 4) != 4)){
                 System.out.println("u");
                 if(!moveUp()){
                     System.out.println("up");
@@ -119,8 +118,7 @@ public class PuzzleGame {
                     lastMove = 0;
                     lastMove |= 1;
                 }
-            }else
-            if(aux < 0.75 && ((lastMove & 2) != 2)){
+            }else if(aux < 0.75 && ((lastMove & 2) != 2)){
                 System.out.println("l");
                 if(!moveLeft()){
                     System.out.println("left");
@@ -130,8 +128,7 @@ public class PuzzleGame {
                     lastMove |= 8;
                 }
             }
-            else
-            if((lastMove & 1) != 1){
+            else if((lastMove & 1) != 1){
                 System.out.println("d");
                 if(!moveDown()){
                     System.out.println("down");
@@ -141,7 +138,6 @@ public class PuzzleGame {
                     lastMove |= 4;
                 }
             }
-                
         }
     }
     
