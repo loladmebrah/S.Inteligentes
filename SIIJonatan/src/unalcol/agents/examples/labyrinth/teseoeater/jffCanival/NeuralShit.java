@@ -22,10 +22,22 @@ public class NeuralShit {
         m_input = new double[4];
         m_outputWeight = new double [m_numNeurHidden];
         initWeigths();
+        initHidden();
     }
     
     public void propageichion(boolean[] a){
-        m_neurHidden.get(m_inputWeight.size() % m_numNeurHidden.size())=a[]*m_inputWeight.get();
+      
+        for (int i =0; i<m_inputWeight.size(); i++){
+            m_neurHidden.set(i % m_numNeurHidden,m_neurHidden.get(i % m_numNeurHidden) + m_inputWeight.get(i)*(getValueA(a[(int)i/4])));
+           
+        }
+        
+        for(int i = 0; i<m_numNeurHidden; i++){
+            m_output = m_output + m_outputWeight[i] * sigma(m_neurHidden.get(i),1.0);
+        }
+        
+        
+        
         
     }
     
@@ -44,6 +56,19 @@ public class NeuralShit {
         }
         for(int i =0; i<m_numNeurHidden; i++){
             m_outputWeight[i]=aleatorio();
+        }
+    }
+
+    private Double getValueA(boolean a) {
+        if(a)
+            return 0.9;
+        
+        return 0.1;
+    }
+
+    private void initHidden() {
+        for(int i = 0; i<m_numNeurHidden; i++){
+            m_neurHidden.add(0.0);
         }
     }
     
