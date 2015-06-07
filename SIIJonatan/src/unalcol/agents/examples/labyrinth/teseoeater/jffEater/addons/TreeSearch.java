@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package unalcol.agents.examples.labyrinth.teseoeater.jffCanival;
+package unalcol.agents.examples.labyrinth.teseoeater.jffEater.addons;
 
 /**
  *

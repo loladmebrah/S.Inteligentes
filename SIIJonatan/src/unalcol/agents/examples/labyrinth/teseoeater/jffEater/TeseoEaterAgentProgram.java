@@ -1,4 +1,4 @@
-package unalcol.agents.examples.labyrinth.teseoeater.jffCanival;
+package unalcol.agents.examples.labyrinth.teseoeater.jffEater;
 
 import unalcol.agents.Action;
 import unalcol.agents.AgentProgram;
@@ -6,11 +6,11 @@ import unalcol.agents.Percept;
 import unalcol.agents.simulate.util.SimpleLanguage;
 import unalcol.types.collection.vector.Vector;
 
-public abstract class TeseoAgentProgramCanival implements AgentProgram{
+public abstract class TeseoEaterAgentProgram implements AgentProgram{
     protected SimpleLanguage language;
     protected Vector<String> cmd = new Vector<String>();
 
-    public TeseoAgentProgramCanival() {
+    public TeseoEaterAgentProgram() {
     }
     
     public void setLanguage(  SimpleLanguage _language ){

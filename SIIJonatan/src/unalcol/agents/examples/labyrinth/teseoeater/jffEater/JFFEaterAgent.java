@@ -1,8 +1,8 @@
-package unalcol.agents.examples.labyrinth.teseoeater.jffCanival;
+package unalcol.agents.examples.labyrinth.teseoeater.jffEater;
 
-public class Useless extends TeseoAgentProgramCanival{
+public class JFFEaterAgent extends TeseoEaterAgentProgram{
 
-    public Useless() {
+    public JFFEaterAgent() {
     }
 
     @Override

@@ -2,7 +2,7 @@ package unalcol.agents.examples.labyrinth.teseoeater;
 import unalcol.agents.Agent;
 
 import unalcol.agents.examples.labyrinth.*;
-import unalcol.agents.examples.labyrinth.teseoeater.jffCanival.Useless;
+import unalcol.agents.examples.labyrinth.teseoeater.jffEater.JFFEaterAgent;
 import unalcol.agents.simulate.util.*;
 
 public class TeseoEaterMain {
@@ -16,7 +16,7 @@ public class TeseoEaterMain {
 
   public static void main( String[] argv ){
     //Agent agent = new Agent( new InteractiveAgentProgram( getLanguage() ) );
-    Useless JP = new Useless();
+    JFFEaterAgent JP = new JFFEaterAgent();
     JP.setLanguage(getLanguage());
     Agent agent = new Agent(JP);
     TeseoEaterMainFrame frame = new TeseoEaterMainFrame( agent, getLanguage() );

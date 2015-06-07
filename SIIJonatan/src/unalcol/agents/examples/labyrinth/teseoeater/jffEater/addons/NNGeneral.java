@@ -1,9 +1,9 @@
-package unalcol.agents.examples.labyrinth.teseoeater.jffCanival;
+package unalcol.agents.examples.labyrinth.teseoeater.jffEater.addons;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class NeuralShit {
+public class NNGeneral {
     
     int m_numNeurHidden;
     double p = 1.0;
@@ -16,7 +16,7 @@ public class NeuralShit {
     double[] m_outputWeight;
     
     
-    public NeuralShit(int numNeurHidden) {
+    public NNGeneral(int numNeurHidden) {
         this.learning_v = 0.01;
         this.m_numNeurHidden = numNeurHidden;
         m_neurHidden = new ArrayList(this.m_numNeurHidden);
@@ -26,6 +26,80 @@ public class NeuralShit {
         initWeigths();
         initHidden();
         this.p = 1.0;
+    }
+
+    /**
+     * Init values for the number of neurons
+     * [0] = input
+     * [1] = hidden
+     * [2] = output
+     */
+    int[] m_numN;
+    
+    /**
+     * Arrays of neurons
+     */
+    ArrayList<Double> m_hid;
+    ArrayList<Double> m_out;
+    
+    /**
+     * Arrays of weights
+     */
+    ArrayList<Double> m_inW;
+    ArrayList<Double> m_outW;
+    
+    /**
+     * Sigma formula to use
+     */
+    Sigma m_sig;
+    
+    /**
+     * Constructor with he number of neurons for input, hiddenLayer, and output 
+     * @param input 
+     * @param hidden
+     * @param output 
+     */    
+    public NNGeneral(int input, int hidden, int output) {
+        m_numN = new int[3];
+        m_numN[0] = input;
+        m_numN[1] = hidden;
+        m_numN[2] = output;
+        
+        m_sig = new SSigmoid();
+        init();
+        
+    }
+    
+    /**
+     * Function to initialize the neurons and weights
+     */
+    private void init(){
+        initArray(m_numN[1], m_hid);
+        initArray(m_numN[2], m_out);
+        
+        Random rand = new Random();
+        
+        initArray(m_numN[0] * m_numN[1], m_inW, rand);
+        initArray(m_numN[1] * m_numN[2], m_outW, rand);
+    }
+    
+    /**
+     * Function that initialize the arrays of neurons, with values of 0
+     * @param n 
+     * @param array 
+     */
+    private void initArray(int n, ArrayList array){
+        for(int i = 0; i < n; i++){
+            boolean add = array.add(0.0);
+            if(!add) i--;
+        }
+    }
+    
+    private void initArray(int n, ArrayList array, Random rand){
+        for(int i = 0; i < n; i++){
+            boolean add = array.add(rand.nextDouble());
+            if(!add) i--;
+        }
     }
     
     private void propageichion(boolean[] a){
@@ -76,11 +150,7 @@ public class NeuralShit {
             
         }
     }
-    
-    private double sigma(double a, double p){
-        return (1/(1+ Math.exp(-a/p)));
-    }
-    
+            
     private double aleatorio(){
         Random rofl = new Random();
         if(Math.random() > 0.49){
